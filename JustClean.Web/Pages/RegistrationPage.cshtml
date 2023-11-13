@@ -32,12 +32,12 @@
             <input asp-for="RegModel.Description" class="form-control" placeholder="Номер телефона">
         </div>
         <div class="form-group my-4">
-            <input asp-for="RegModel.Password" class="form-control">
+            <input asp-for="RegModel.Password" class="form-control" placeholder="Пароль">
         </div>
         <div class="form-group my-4">
-            <input asp-for="RegModel.ConfirmPassword" class="form-control">
+            <input asp-for="RegModel.ConfirmPassword" class="form-control" placeholder="Повтор пароля">
         </div>
-        <div asp-validation-summary="ModelOnly" class="text-error"></div>
+        
         <div class="container">
             <div class="row">
                 <button type="submit" class="btn btn-dark text-light bg-dark">Зарегистрироваться</button>
