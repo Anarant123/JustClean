@@ -1,0 +1,26 @@
+﻿@page
+@model JustClean.Web.Pages.AuthotizationPageModel
+@{
+    ViewData["Title"] = "Авторизация";
+}
+
+<div class="container col-md-6 mx-auto">
+    <div class="row justify-content-center">
+        <form method="post">
+            <h1>@ViewData["Title"]</h1>
+            <div class="form-group my-3">
+                <input asp-for="AuthModel.Login" class="form-control" placeholder="Логин" />
+            </div>
+            <div class="form-group my-3">
+                <input asp-for="AuthModel.Password" class="form-control" placeholder="Пароль" />
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-error"></div>
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark text-light bg-dark col mx-1">Войти</button>
+                    <a asp-page="/RegistrationPage" class="btn btn-dark text-light bg-dark col mx-1">Зарегистрироваться</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

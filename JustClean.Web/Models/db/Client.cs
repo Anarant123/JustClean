@@ -27,6 +27,10 @@ public partial class Client
 
     public int? IdOffice { get; set; }
 
+    public string? Login { get; set; }
+
+    public string? Password { get; set; }
+
     public virtual ICollection<Deal> Deals { get; set; } = new List<Deal>();
 
     public virtual Office? IdOfficeNavigation { get; set; }

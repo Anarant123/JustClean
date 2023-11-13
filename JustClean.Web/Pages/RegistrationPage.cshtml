@@ -1,0 +1,47 @@
+﻿@page
+@model JustClean.Web.Pages.RegistrationPageModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="container col-md-6 mx-auto">
+    <h1>@ViewData["Title"]</h1>
+    <form asp-controller="Auth" asp-action="Register" method="post">
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Login" class="form-control" placeholder="Логин">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.IdOffice" class="form-control" placeholder="Офис">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Name" class="form-control" placeholder="Имя">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Surname" class="form-control" placeholder="Фамилия">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Patronymic" class="form-control" placeholder="Отчество">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Mail" class="form-control" placeholder="Электронная почта">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Phone" class="form-control" placeholder="Номер телефона">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Description" class="form-control" placeholder="Номер телефона">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.Password" class="form-control">
+        </div>
+        <div class="form-group my-4">
+            <input asp-for="RegModel.ConfirmPassword" class="form-control">
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-error"></div>
+        <div class="container">
+            <div class="row">
+                <button type="submit" class="btn btn-dark text-light bg-dark">Зарегистрироваться</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -37,7 +37,8 @@ public partial class JustcleanContext : DbContext
 
     public virtual DbSet<Userrole> Userroles { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;database=justclean;user=root;password=password", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -80,8 +81,10 @@ public partial class JustcleanContext : DbContext
 
             entity.Property(e => e.CreateDate).HasColumnType("datetime");
             entity.Property(e => e.Description).HasColumnType("text");
+            entity.Property(e => e.Login).HasMaxLength(45);
             entity.Property(e => e.Mail).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Password).HasMaxLength(45);
             entity.Property(e => e.Patronymic).HasMaxLength(255);
             entity.Property(e => e.Phone).HasMaxLength(255);
             entity.Property(e => e.Surname).HasMaxLength(255);
