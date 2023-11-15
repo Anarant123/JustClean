@@ -1,4 +1,6 @@
 ﻿@page
+@using JustClean.Web.Repository
+@inject Repository _repository
 @model JustClean.Web.Pages.RegistrationPageModel
 @{
     ViewData["Title"] = "Регистрация";
@@ -6,35 +8,50 @@
 
 <div class="container col-md-6 mx-auto">
     <h1>@ViewData["Title"]</h1>
-    <form asp-controller="Auth" asp-action="Register" method="post">
-        <div class="form-group my-4">
+    <form method="post">
+        <div class="form-group my-1">
+            <label>Логин:</label>
             <input asp-for="RegModel.Login" class="form-control" placeholder="Логин">
         </div>
-        <div class="form-group my-4">
-            <input asp-for="RegModel.IdOffice" class="form-control" placeholder="Офис">
+        <div class="form-group my-1">
+            <label>Офис</label>
+            <select asp-for="RegModel.IdOffice" class="form-control">
+                @foreach(var office in Model.Offices)
+                {
+                    <option value="@office.Id">@office.Name</option>
+                }
+            </select>
         </div>
-        <div class="form-group my-4">
+        <div class="form-group my-1">
+            <label>Имя:</label>
             <input asp-for="RegModel.Name" class="form-control" placeholder="Имя">
         </div>
-        <div class="form-group my-4">
+        <div class="form-group my-1">
+            <label>Фамилия:</label>
             <input asp-for="RegModel.Surname" class="form-control" placeholder="Фамилия">
         </div>
-        <div class="form-group my-4">
+        <div class="form-group my-1">
+            <label>Отчество:</label>
             <input asp-for="RegModel.Patronymic" class="form-control" placeholder="Отчество">
         </div>
-        <div class="form-group my-4">
+        <div class="form-group my-1">
+            <label>Электронная почта:</label>
             <input asp-for="RegModel.Mail" class="form-control" placeholder="Электронная почта">
         </div>
-        <div class="form-group my-4">
+        <div class="form-group my-1">
+            <label>Номер телефона:</label>
             <input asp-for="RegModel.Phone" class="form-control" placeholder="Номер телефона">
         </div>
-        <div class="form-group my-4">
-            <input asp-for="RegModel.Description" class="form-control" placeholder="Номер телефона">
+        <div class="form-group my-1">
+            <label>Описание:</label>
+            <input asp-for="RegModel.Description" class="form-control" placeholder="Описание">
         </div>
-        <div class="form-group my-4">
+        <div class="form-group my-1">
+            <label>Пароль:</label>
             <input asp-for="RegModel.Password" class="form-control" placeholder="Пароль">
         </div>
-        <div class="form-group my-4">
+        <div class="form-group my-1">
+            <label>Пароль:</label>
             <input asp-for="RegModel.ConfirmPassword" class="form-control" placeholder="Повтор пароля">
         </div>
         

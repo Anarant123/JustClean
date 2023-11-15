@@ -1,3 +1,7 @@
+using JustClean.Web.Models.db;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+
 namespace JustClean.Web
 {
     public class Program
@@ -6,8 +10,13 @@ namespace JustClean.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<JustcleanContext>();
+
+            builder.Services.AddScoped<Repository.Repository>();
+
             // Add services to the container.
             builder.Services.AddRazorPages();
+            
 
             var app = builder.Build();
 
@@ -16,12 +25,10 @@ namespace JustClean.Web
             {
                 app.UseExceptionHandler("/Error");
             }
+
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.MapRazorPages();
 
             app.Run();
