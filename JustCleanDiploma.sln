@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustCleanDiploma", "JustCle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingLibrary", "WorkingLibrary\WorkingLibrary.csproj", "{7950EDD9-E2D6-4B27-93DA-41920F1ED510}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustClean.Web", "JustClean.Web\JustClean.Web.csproj", "{CDF43D17-AC1B-49D6-9CA6-7DB2BB96712E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustClean.Web", "JustClean.Web\JustClean.Web.csproj", "{CDF43D17-AC1B-49D6-9CA6-7DB2BB96712E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

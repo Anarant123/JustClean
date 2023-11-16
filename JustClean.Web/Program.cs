@@ -1,4 +1,5 @@
 using JustClean.Web.Models.db;
+using JustClean.Web.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -16,7 +17,8 @@ namespace JustClean.Web
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            
+            builder.Services.AddScoped<CookieService>();
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 
