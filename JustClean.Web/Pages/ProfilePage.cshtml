@@ -3,11 +3,28 @@
 @{
 }
 
-<div class="col-9">
-    <div class="row align-items-center px-3">
-        <label class="col-2">Login</label>
-        <div class="mb-1 col-6">
-            <label class="lblperson">@Model.Client.Login</label>
-        </div>
-    </div>
+<div class="container col-md-6 mx-auto">
+    <h1>@ViewData["Title"]</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Офис:</dt>
+        <dd class="col-sm-9">@Model.Client.IdOfficeNavigation.Name</dd>
+
+        <dt class="col-sm-3">Имя:</dt>
+        <dd class="col-sm-9">@Model.Client.Name</dd>
+
+        <dt class="col-sm-3">Фамилия:</dt>
+        <dd class="col-sm-9">@Model.Client.Surname</dd>
+
+        <dt class="col-sm-3">Отчество:</dt>
+        <dd class="col-sm-9">@Model.Client.Patronymic</dd>
+
+        <dt class="col-sm-3">Электронная почта:</dt>
+        <dd class="col-sm-9">@Model.Client.Mail</dd>
+
+        <dt class="col-sm-3">Номер телефона:</dt>
+        <dd class="col-sm-9">@Model.Client.Phone</dd>
+
+        <dt class="col-sm-3">Описание:</dt>
+        <dd class="col-sm-9">@Model.Client.Description</dd>
+    </dl>
 </div>

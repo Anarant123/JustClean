@@ -13,41 +13,12 @@ namespace JustClean.Web.Service
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }
 
-        //public void SetCookie<T>(string key, T value, int? expireTimeDays = null)
-        //{
-        //    var serializedValue = JsonSerializer.Serialize(value);
-
-        //    var options = new CookieOptions
-        //    {
-        //        HttpOnly = true,
-        //        IsEssential = true // Сделайте настройки по своему усмотрению
-        //    };
-
-        //    if (expireTimeDays.HasValue)
-        //    {
-        //        options.Expires = DateTime.Now.AddDays(expireTimeDays.Value);
-        //    }
-
-        //    _httpContextAccessor.HttpContext.Response.Cookies.Append(key, serializedValue, options);
-        //}
-
-        //public T GetCookie<T>(string key)
-        //{
-        //    var cookieValue = _httpContextAccessor.HttpContext.Request.Cookies[key];
-        //    if (cookieValue != null)
-        //    {
-        //        return JsonSerializer.Deserialize<T>(cookieValue);
-        //    }
-
-        //    return default;
-        //}
-
         public void SetCookie(string key, int id, int? expireTimeDays = null)
         {
             var options = new CookieOptions
             {
                 HttpOnly = true,
-                IsEssential = true // Сделайте настройки по своему усмотрению
+                IsEssential = true
             };
 
             if (expireTimeDays.HasValue)
@@ -63,6 +34,18 @@ namespace JustClean.Web.Service
             var cookieValue = _httpContextAccessor.HttpContext.Request.Cookies[key];
 
             return string.IsNullOrEmpty(cookieValue) ? -1 : Convert.ToInt32(cookieValue);
+        }
+
+        public void DeleteCookie(string key)
+        {
+            var options = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(-1),
+                IsEssential = true, 
+                HttpOnly = true
+            };
+
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete(key, options);
         }
     }
 }
