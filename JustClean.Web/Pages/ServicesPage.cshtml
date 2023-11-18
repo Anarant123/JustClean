@@ -3,3 +3,32 @@
 @{
     ViewData["Title"] = "Список услуг";
 }
+
+<div class="container mt-2">
+    <div class="row">
+        @if (!Model.Services.Any())
+        {
+            <h1 class="text-center">Услуг нет</h1>
+        }
+        else
+        {
+            <h1 class="text-center">Услуги</h1>
+        }
+        @foreach (var service in Model.Services)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <form method="post">
+                        <input type="hidden" name="serviceId" value="@service.Id" />
+                        <img src="data:image/png;base64,@Convert.ToBase64String(service.Image)" class="card-img-top" alt="@service.Name">
+                        <div class="card-body">
+                            <h5 class="card-title">@service.Name</h5>
+                            <p class="card-text">Цена: @service.Price</p>
+                            <button type="submit" class="btn btn-primary">Подробнее</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>

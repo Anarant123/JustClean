@@ -1,30 +1,51 @@
 ﻿@page
 @model JustClean.Web.Pages.ProfilePageModel
 @{
+    ViewData["Title"] = "Профиль";
 }
 
-<div class="container col-md-6 mx-auto">
-    <h1>@ViewData["Title"]</h1>
-    <dl class="row">
-        <dt class="col-sm-3">Офис:</dt>
-        <dd class="col-sm-9">@Model.Client.IdOfficeNavigation.Name</dd>
+<div class="container mt-5">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <div class="card shadow p-4">
+        <dl class="row">
+            <dt class="col-sm-3">Офис:</dt>
+            <dd class="col-sm-9">@Model.Client.IdOfficeNavigation.Name</dd>
 
-        <dt class="col-sm-3">Имя:</dt>
-        <dd class="col-sm-9">@Model.Client.Name</dd>
+            <dt class="col-sm-3">Имя:</dt>
+            <dd class="col-sm-9">@Model.Client.Name</dd>
 
-        <dt class="col-sm-3">Фамилия:</dt>
-        <dd class="col-sm-9">@Model.Client.Surname</dd>
+            <dt class="col-sm-3">Фамилия:</dt>
+            <dd class="col-sm-9">@Model.Client.Surname</dd>
 
-        <dt class="col-sm-3">Отчество:</dt>
-        <dd class="col-sm-9">@Model.Client.Patronymic</dd>
+            <dt class="col-sm-3">Отчество:</dt>
+            <dd class="col-sm-9">@Model.Client.Patronymic</dd>
 
-        <dt class="col-sm-3">Электронная почта:</dt>
-        <dd class="col-sm-9">@Model.Client.Mail</dd>
+            <dt class="col-sm-3">Электронная почта:</dt>
+            <dd class="col-sm-9">@Model.Client.Mail</dd>
 
-        <dt class="col-sm-3">Номер телефона:</dt>
-        <dd class="col-sm-9">@Model.Client.Phone</dd>
+            <dt class="col-sm-3">Номер телефона:</dt>
+            <dd class="col-sm-9">@Model.Client.Phone</dd>
 
-        <dt class="col-sm-3">Описание:</dt>
-        <dd class="col-sm-9">@Model.Client.Description</dd>
-    </dl>
+            <dt class="col-sm-3">Описание:</dt>
+            <dd class="col-sm-9">
+                @if (string.IsNullOrEmpty(Model.Client.Description))
+                {
+                    <text>Отсутствует</text>
+                }
+                else
+                {
+                    @Model.Client.Description
+                }
+            </dd>
+        </dl>
+    </div>
+    <div class="container text-center mt-3">
+        <div class="row">
+            <div class="col-sm-12">
+                <form method="post">
+                    <button type="submit" class="btn btn-dark btn-block text-light bg-dark" style="font-size: 20px; width:200px">Выйти</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

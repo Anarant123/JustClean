@@ -10,7 +10,9 @@ namespace JustClean.Web.Repository
     {
         public static async Task<Client> GetClient(this Repository repository, int id)
         {
-            var client = await repository.context.Clients.FirstOrDefaultAsync(x => x.Id == id);
+            var client = await repository.context.Clients
+                .Include(x => x.IdOfficeNavigation)
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (client is null) return null;
 
             return client;

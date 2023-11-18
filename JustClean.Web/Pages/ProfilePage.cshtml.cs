@@ -27,7 +27,7 @@ namespace JustClean.Web.Pages
         public IActionResult OnPost()
         {
             _cookieService.DeleteCookie("ClientData");
-            return RedirectToPage("/return RedirectToPage(\"/ProfilePage\", new { id = id });");
+            return RedirectToPage("/AuthorizationPage");
         }
     }
 }
