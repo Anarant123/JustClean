@@ -2,22 +2,49 @@
 @model JustClean.Web.Pages.ServiceInfoPageModel
 
 @{
-    ViewData["Title"] = "Услуга: " ;
+    ViewData["Title"] = "Услуга: " + @Model.ServiceInfo.Name;
 }
 
-<div class="container mt-5">
+<div class="container mt-1">
     <h1>@ViewData["Title"]</h1>
 
-    <div class="card" style="width: 18rem;">
-        <img src="data:image/png;base64,@Convert.ToBase64String(Model.ServiceInfo.Image)" class="card-img-top" alt="@Model.Name">
+    <div>
+        <img src="data:image/png;base64,@Convert.ToBase64String(Model.ServiceInfo.Image)" class="card-img-top img-fluid" style="max-width: 600px; max-height: 400px;">
         <div class="card-body">
-            <h5 class="card-title">@Model.ServiceInfo.Name</h5>
-            <p class="card-text">Цена: @Model.ServiceInfo.Price</p>
+            <h1 class="card-text">Цена: @Model.ServiceInfo.Price</h1>
             <p class="card-text">@Model.ServiceInfo.Description</p>
-            <form method="post">
-                <input type="hidden" name="serviceId" value="@Model.ServiceInfo.Id" />
-                <button type="submit" class="btn btn-primary">Заказать</button>
-            </form>
         </div>
+
+        <h1>Заказать услугу</h1>
+
+        <form method="post">
+            <input type="hidden" name="IdService" value="@Model.ServiceInfo.Id" />
+            <div class="form-group my-1">
+                <label for="Street">Улица:</label>
+                <input type="text" class="form-control" id="Street" name="Street" placeholder="Введите вашу улицу" required>
+            </div>
+
+            <div class="form-group my-1">
+                <label for="House">Дом:</label>
+                <input type="number" class="form-control" id="House" name="House" placeholder="Введите номер дома" required>
+            </div>
+
+            <div class="form-group my-1">
+                <label for="Flat">Квартира:</label>
+                <input type="number" class="form-control" id="Flat" name="Flat" placeholder="Введите номер квартиры" required>
+            </div>
+
+            <div class="form-group my-1">
+                <label for="ProvisionDate">Дата предоставления услуги:</label>
+                <input type="date" class="form-control" id="ProvisionDate" name="ProvisionDate" required>
+            </div>
+
+            <div class="form-group my-1">
+                <label for="Description">Дополнительное описание:</label>
+                <textarea class="form-control" id="Description" name="Description" rows="3" placeholder="Введите дополнительное описание"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Отправить заказ</button>
+        </form>
     </div>
 </div>

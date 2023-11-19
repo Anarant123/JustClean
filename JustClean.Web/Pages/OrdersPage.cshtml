@@ -3,3 +3,27 @@
 @{
     ViewData["Title"] = "Мои заказы";
 }
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        @foreach (var deal in Model.Deals)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@deal.Name</h5>
+                        <p class="card-text">Цена: @deal.Cost</p>
+                        <p class="card-text">Улица: @deal.Street</p>
+                        <p class="card-text">Дом: @deal.House</p>
+                        <p class="card-text">Квартира: @deal.Flat</p>
+                        <p class="card-text">Дата исполнения: @deal.ProvisionDate</p>
+                        <p class="card-text">Описание: @deal.Description</p>
+                        <p class="card-text">Статус: @deal.IdStatusNavigation?.Name</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

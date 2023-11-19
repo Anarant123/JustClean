@@ -27,7 +27,7 @@ namespace JustClean.Web.Pages
 
             if (client != null)
             {
-                return RedirectToPage("/AuthotizationPage");
+                return RedirectToPage("/AuthorizationPage");
             }
 
             return Page();

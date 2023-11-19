@@ -19,7 +19,7 @@ namespace JustClean.Web.Pages
         }
         public async Task OnGet()
         {
-            Services = await _repository.GetService();
+            Services = await _repository.GetServices();
         }
 
         public async Task<IActionResult> OnPostAsync(int serviceId)
