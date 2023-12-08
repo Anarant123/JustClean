@@ -11,7 +11,10 @@ namespace JustClean.Web.Pages
     {
         private readonly Repository.Repository _repository;
         private readonly CookieService _cookieService;
+        [BindProperty]
         public JustClean.Web.Models.db.Service ServiceInfo { get; set; }
+        [BindProperty]
+        public OrderServiceModel OrderServiceModel { get; set; }
 
         public ServiceInfoPageModel(Repository.Repository repository, CookieService cookieService)
         {

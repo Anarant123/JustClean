@@ -37,11 +37,13 @@ namespace JustClean.Web.Pages
             if (client != null)
             {
                 _cookieService.SetCookie("ClientData", client.Id);
-
                 return RedirectToPage("/ProfilePage", new { id = client.Id });
             }
-
-            return Page();
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Ошибка: Неверный логин или пароль");
+                return Page();
+            }
         }
     }
 }

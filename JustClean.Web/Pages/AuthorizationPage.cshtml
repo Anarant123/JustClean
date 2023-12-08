@@ -10,11 +10,13 @@
             <h1>@ViewData["Title"]</h1>
             <div class="form-group my-3">
                 <input asp-for="AuthModel.Login" class="form-control" placeholder="Логин" />
+                <span asp-validation-for="AuthModel.Login" class="text-danger"></span>
             </div>
             <div class="form-group my-3">
                 <input asp-for="AuthModel.Password" class="form-control" placeholder="Пароль" />
+                <span asp-validation-for="AuthModel.Password" class="text-danger"></span>
             </div>
-            <div asp-validation-summary="ModelOnly" class="text-error"></div>
+            <div asp-validation-summary="ModelOnly" class="text-error text-danger"></div>
             <div class="form-group">
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-dark text-light bg-dark col mx-1">Войти</button>

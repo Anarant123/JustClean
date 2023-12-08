@@ -12,6 +12,7 @@
         <div class="form-group my-1">
             <label>Логин:</label>
             <input asp-for="RegModel.Login" class="form-control" placeholder="Логин">
+            <span asp-validation-for="RegModel.Login" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Офис</label>
@@ -21,38 +22,47 @@
                     <option value="@office.Id">@office.Name</option>
                 }
             </select>
+            <span asp-validation-for="RegModel.IdOffice" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Имя:</label>
             <input asp-for="RegModel.Name" class="form-control" placeholder="Имя">
+            <span asp-validation-for="RegModel.Name" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Фамилия:</label>
             <input asp-for="RegModel.Surname" class="form-control" placeholder="Фамилия">
+            <span asp-validation-for="RegModel.Surname" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Отчество:</label>
             <input asp-for="RegModel.Patronymic" class="form-control" placeholder="Отчество">
+            <span asp-validation-for="RegModel.Patronymic" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Электронная почта:</label>
             <input asp-for="RegModel.Mail" class="form-control" placeholder="Электронная почта">
+            <span asp-validation-for="RegModel.Mail" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Номер телефона:</label>
             <input asp-for="RegModel.Phone" class="form-control" placeholder="Номер телефона">
+            <span asp-validation-for="RegModel.Phone" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Описание:</label>
             <input asp-for="RegModel.Description" class="form-control" placeholder="Описание">
+            <span asp-validation-for="RegModel.Description" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Пароль:</label>
             <input asp-for="RegModel.Password" class="form-control" placeholder="Пароль">
+            <span asp-validation-for="RegModel.Password" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Пароль:</label>
             <input asp-for="RegModel.ConfirmPassword" class="form-control" placeholder="Повтор пароля">
+            <span asp-validation-for="RegModel.ConfirmPassword" class="text-danger"></span>
         </div>
         
         <div class="container">

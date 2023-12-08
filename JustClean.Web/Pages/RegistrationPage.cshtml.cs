@@ -9,7 +9,10 @@ namespace JustClean.Web.Pages
     public class RegistrationPageModel : PageModel
     {
         private readonly Repository.Repository _repository;
-        public RegModel? RegModel { get; set; }
+
+        [BindProperty]
+        public RegModel RegModel { get; set; }
+        [BindProperty]
         public List<Office> Offices { get; set; }
 
         public RegistrationPageModel(Repository.Repository repository)
@@ -21,8 +24,16 @@ namespace JustClean.Web.Pages
             Offices = await _repository.GetOffices();
         }
 
-        public async Task<IActionResult> OnPost(RegModel regModel)
+        public async Task<IActionResult> OnPost()
         {
+            var regModel = RegModel;
+
+            if (!ModelState.IsValid)
+            {
+                Offices = await _repository.GetOffices();
+                return Page();
+            }
+
             var client = await _repository.Registration(regModel);
 
             if (client != null)
@@ -32,5 +43,6 @@ namespace JustClean.Web.Pages
 
             return Page();
         }
+
     }
 }
