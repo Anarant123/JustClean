@@ -36,13 +36,13 @@ namespace JustClean.Web.Models
         [Required(ErrorMessage = "Логин обязателен")]
         public string? Login { get; set; }
 
+
         [Required(ErrorMessage = "Пароль обязателен")]
         [DataType(DataType.Password)]
-        public string? Password { get; set; }
+        public string Password { get; set; }
 
-        [Required(ErrorMessage = "Повтор пароля обязателен")]
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         [DataType(DataType.Password)]
-        public string? ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

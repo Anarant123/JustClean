@@ -17,35 +17,35 @@
         <h1>Заказать услугу</h1>
 
         <form method="post">
-            <input type="hidden" name="IdService" value="@Model.ServiceInfo.Id" />
+            <input type="hidden" asp-for="OrderServiceModel.IdService" value="@Model.ServiceInfo.Id" />
 
             <div class="form-group my-1">
-                <label for="Street">Улица:</label>
-                <input type="text" class="form-control" asp-for="OrderServiceModel.Street" placeholder="Введите вашу улицу" required>
+                <label asp-for="OrderServiceModel.Street">Улица:</label>
+                <input asp-for="OrderServiceModel.Street" class="form-control" placeholder="Введите вашу улицу" required>
                 <span asp-validation-for="OrderServiceModel.Street" class="text-danger"></span>
             </div>
 
             <div class="form-group my-1">
-                <label for="House">Дом:</label>
-                <input type="number" class="form-control" asp-for="OrderServiceModel.House" placeholder="Введите номер дома" required>
+                <label asp-for="OrderServiceModel.House">Дом:</label>
+                <input asp-for="OrderServiceModel.House" class="form-control" placeholder="Введите номер дома" required>
                 <span asp-validation-for="OrderServiceModel.House" class="text-danger"></span>
             </div>
 
             <div class="form-group my-1">
-                <label for="Flat">Квартира:</label>
-                <input type="number" class="form-control" asp-for="OrderServiceModel.Flat" placeholder="Введите номер квартиры" required>
+                <label asp-for="OrderServiceModel.Flat">Квартира:</label>
+                <input asp-for="OrderServiceModel.Flat" class="form-control" placeholder="Введите номер квартиры" required>
                 <span asp-validation-for="OrderServiceModel.Flat" class="text-danger"></span>
             </div>
 
             <div class="form-group my-1">
-                <label for="ProvisionDate">Дата предоставления услуги:</label>
-                <input type="date" class="form-control" asp-for="OrderServiceModel.ProvisionDate" required>
+                <label asp-for="OrderServiceModel.ProvisionDate">Дата предоставления услуги:</label>
+                <input asp-for="OrderServiceModel.ProvisionDate" type="date" class="form-control" required>
                 <span asp-validation-for="OrderServiceModel.ProvisionDate" class="text-danger"></span>
             </div>
 
             <div class="form-group my-1">
-                <label for="Description">Дополнительное описание:</label>
-                <textarea class="form-control" asp-for="OrderServiceModel.Description" rows="3" placeholder="Введите дополнительное описание"></textarea>
+                <label asp-for="OrderServiceModel.Description">Дополнительное описание:</label>
+                <textarea asp-for="OrderServiceModel.Description" class="form-control" rows="3" placeholder="Введите дополнительное описание"></textarea>
                 <span asp-validation-for="OrderServiceModel.Description" class="text-danger"></span>
             </div>
 
