@@ -8,21 +8,30 @@
     <h1>@ViewData["Title"]</h1>
 
     <div class="row">
-        @foreach (var deal in Model.Deals)
+        @if (Model.Deals.Any())
         {
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">@deal.Name</h5>
-                        <p class="card-text">Цена: @deal.Cost</p>
-                        <p class="card-text">Улица: @deal.Street</p>
-                        <p class="card-text">Дом: @deal.House</p>
-                        <p class="card-text">Квартира: @deal.Flat</p>
-                        <p class="card-text">Дата исполнения: @deal.ProvisionDate</p>
-                        <p class="card-text">Описание: @deal.Description</p>
-                        <p class="card-text">Статус: @deal.IdStatusNavigation?.Name</p>
+            @foreach (var deal in Model.Deals)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@deal.Name</h5>
+                            <p class="card-text">Цена: @deal.Cost</p>
+                            <p class="card-text">Улица: @deal.Street</p>
+                            <p class="card-text">Дом: @deal.House</p>
+                            <p class="card-text">Квартира: @deal.Flat</p>
+                            <p class="card-text">Дата исполнения: @deal.ProvisionDate</p>
+                            <p class="card-text">Описание: @deal.Description</p>
+                            <p class="card-text">Статус: @deal.IdStatusNavigation?.Name</p>
+                        </div>
                     </div>
                 </div>
+            }
+        }
+        else
+        {
+            <div class="col-md-12 text-center">
+                <h1>У вас еще нет заказов</h1>
             </div>
         }
     </div>

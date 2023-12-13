@@ -14,6 +14,8 @@ namespace JustClean.Web.Pages
         public RegModel RegModel { get; set; }
         public List<Office> Offices { get; set; }
 
+        public string Error { get; set; }
+
         public RegistrationPageModel(Repository.Repository repository)
         {
             _repository = repository;
@@ -39,6 +41,8 @@ namespace JustClean.Web.Pages
             }
 
             Offices = await _repository.GetOffices();
+            Error = "Регистрация не удалась, возможно пользователь с таким логином уже зарегистрирован.";
+
             return Page();
         }
 

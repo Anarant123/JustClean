@@ -52,19 +52,19 @@
         <div class="form-group my-1">
             <label>Описание:</label>
             <input asp-for="RegModel.Description" class="form-control" placeholder="Описание">
-            <span asp-validation-for="RegModel.Description" class="text-danger"></span>
         </div>
         <div class="form-group my-1">
             <label>Пароль:</label>
             <input asp-for="RegModel.Password" class="form-control" placeholder="Пароль">
             <span asp-validation-for="RegModel.Password" class="text-danger"></span>
         </div>
-        <div class="form-group my-1">
+        <div class="form-group my-2">
             <label>Повторите пароль:</label>
             <input asp-for="RegModel.ConfirmPassword" class="form-control" placeholder="Повтор пароля">
             <span asp-validation-for="RegModel.ConfirmPassword" class="text-danger"></span>
         </div>
-        
+        <span class="text-error text-danger my-1">@Model.Error</span>
+
         <div class="container">
             <div class="row">
                 <button type="submit" class="btn btn-dark text-light bg-dark">Зарегистрироваться</button>
