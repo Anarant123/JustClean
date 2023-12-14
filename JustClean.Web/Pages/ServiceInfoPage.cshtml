@@ -8,7 +8,14 @@
     <h1>@ViewData["Title"]</h1>
 
     <div>
-        <img src="data:image/png;base64,@Convert.ToBase64String(Model.ServiceInfo.Image)" class="card-img-top img-fluid" style="max-width: 600px; max-height: 400px;">
+        @if (Model.ServiceInfo.Image == null)
+        {
+            <img src="~/images/null_image.jpg" style="max-width: 600px; max-height: 400px;">
+        }
+        else
+        {
+            <img src="data:image/png;base64,@Convert.ToBase64String(Model.ServiceInfo.Image)" class="card-img-top img-fluid" style="max-width: 600px; max-height: 400px;"> 
+        }
         <div class="card-body">
             <h1 class="card-text">Цена: @Model.ServiceInfo.Price</h1>
             <p class="card-text">@Model.ServiceInfo.Description</p>
@@ -16,40 +23,49 @@
 
         <h1>Заказать услугу</h1>
 
-        <form method="post">
-            <input type="hidden" asp-for="OrderServiceModel.IdService" value="@Model.ServiceInfo.Id" />
+        @if(Model.IdClient != -1)
+        {
+            <form method="post">
+                <input type="hidden" asp-for="OrderServiceModel.IdService" value="@Model.ServiceInfo.Id" />
 
-            <div class="form-group my-1">
-                <label asp-for="OrderServiceModel.Street">Улица:</label>
-                <input asp-for="OrderServiceModel.Street" class="form-control" placeholder="Введите вашу улицу" required>
-                <span asp-validation-for="OrderServiceModel.Street" class="text-danger"></span>
+                <div class="form-group my-1">
+                    <label asp-for="OrderServiceModel.Street">Улица:</label>
+                    <input asp-for="OrderServiceModel.Street" class="form-control" placeholder="Введите вашу улицу" required>
+                    <span asp-validation-for="OrderServiceModel.Street" class="text-danger"></span>
+                </div>
+
+                <div class="form-group my-1">
+                    <label asp-for="OrderServiceModel.House">Дом:</label>
+                    <input asp-for="OrderServiceModel.House" class="form-control" placeholder="Введите номер дома" required>
+                    <span asp-validation-for="OrderServiceModel.House" class="text-danger"></span>
+                </div>
+
+                <div class="form-group my-1">
+                    <label asp-for="OrderServiceModel.Flat">Квартира:</label>
+                    <input asp-for="OrderServiceModel.Flat" class="form-control" placeholder="Введите номер квартиры" required>
+                    <span asp-validation-for="OrderServiceModel.Flat" class="text-danger"></span>
+                </div>
+
+                <div class="form-group my-1">
+                    <label asp-for="OrderServiceModel.ProvisionDate">Дата предоставления услуги:</label>
+                    <input asp-for="OrderServiceModel.ProvisionDate" type="date" class="form-control" required>
+                    <span asp-validation-for="OrderServiceModel.ProvisionDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group my-1">
+                    <label asp-for="OrderServiceModel.Description">Дополнительное описание:</label>
+                    <textarea asp-for="OrderServiceModel.Description" class="form-control" rows="3" placeholder="Введите дополнительное описание"></textarea>
+                    <span asp-validation-for="OrderServiceModel.Description" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Отправить заказ</button>
+            </form>
+        }
+        else
+        {
+            <div class="col-md-12 text-center">
+                <h1>Для заказа необходимо авторизоваться</h1>
             </div>
-
-            <div class="form-group my-1">
-                <label asp-for="OrderServiceModel.House">Дом:</label>
-                <input asp-for="OrderServiceModel.House" class="form-control" placeholder="Введите номер дома" required>
-                <span asp-validation-for="OrderServiceModel.House" class="text-danger"></span>
-            </div>
-
-            <div class="form-group my-1">
-                <label asp-for="OrderServiceModel.Flat">Квартира:</label>
-                <input asp-for="OrderServiceModel.Flat" class="form-control" placeholder="Введите номер квартиры" required>
-                <span asp-validation-for="OrderServiceModel.Flat" class="text-danger"></span>
-            </div>
-
-            <div class="form-group my-1">
-                <label asp-for="OrderServiceModel.ProvisionDate">Дата предоставления услуги:</label>
-                <input asp-for="OrderServiceModel.ProvisionDate" type="date" class="form-control" required>
-                <span asp-validation-for="OrderServiceModel.ProvisionDate" class="text-danger"></span>
-            </div>
-
-            <div class="form-group my-1">
-                <label asp-for="OrderServiceModel.Description">Дополнительное описание:</label>
-                <textarea asp-for="OrderServiceModel.Description" class="form-control" rows="3" placeholder="Введите дополнительное описание"></textarea>
-                <span asp-validation-for="OrderServiceModel.Description" class="text-danger"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Отправить заказ</button>
-        </form>
+        }
     </div>
 </div>

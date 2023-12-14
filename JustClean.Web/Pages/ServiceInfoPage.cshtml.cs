@@ -14,6 +14,7 @@ namespace JustClean.Web.Pages
         public JustClean.Web.Models.db.Service ServiceInfo { get; set; }
         [BindProperty]
         public OrderServiceModel OrderServiceModel { get; set; }
+        public int IdClient { get; set; }
 
         public ServiceInfoPageModel(Repository.Repository repository, CookieService cookieService)
         {
@@ -23,6 +24,7 @@ namespace JustClean.Web.Pages
         public async Task OnGet(int id)
         {
             ServiceInfo = await _repository.GetService(id);
+            IdClient = _cookieService.GetCookie("ClientData");
         }
 
         public async Task<IActionResult> OnPost(OrderServiceModel orderServiceModel)
@@ -30,11 +32,12 @@ namespace JustClean.Web.Pages
             if (!ModelState.IsValid)
             {
                 ServiceInfo = await _repository.GetService((int)orderServiceModel.IdService);
+                IdClient = _cookieService.GetCookie("ClientData");
                 return Page();
             }
 
-            OrderServiceModel.IdClient = _cookieService.GetCookie("ClientData");
-            await _repository.OrderService(OrderServiceModel);
+            orderServiceModel.IdClient = _cookieService.GetCookie("ClientData");
+            await _repository.OrderService(orderServiceModel);
 
             return RedirectToPage("/OrdersPage");
         }

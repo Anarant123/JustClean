@@ -20,7 +20,14 @@
                 <div class="card">
                     <form method="post">
                         <input type="hidden" name="serviceId" value="@service.Id" />
-                        <img src="data:image/png;base64,@Convert.ToBase64String(service.Image)" class="card-img-top" alt="@service.Name">
+                        @if (service.Image == null)
+                        {
+                            <img src="~/images/null_image.jpg" style="max-width: 600px; max-height: 400px;">
+                        }
+                        else
+                        {
+                            <img src="data:image/png;base64,@Convert.ToBase64String(service.Image)" class="card-img-top img-fluid" style="max-width: 600px; max-height: 400px;">
+                        }
                         <div class="card-body">
                             <h5 class="card-title">@service.Name</h5>
                             <p class="card-text">Цена: @service.Price</p>
